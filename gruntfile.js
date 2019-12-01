@@ -55,12 +55,18 @@ module.exports = grunt => {
 				ext: '.css'
 			}
 		},
-
-		autoprefixer: {
-			core: {
-				src: 'css/reveal.css'
-			}
-		},
+    
+    postcss: {
+      options: {
+        map: true,
+        processors: [
+          require('autoprefixer')({browsers: ['last 2 versions']})
+        ]
+      },
+      dist: {
+        src: 'css/reveal.css'
+      }
+    },
 
 		cssmin: {
 			options: {
